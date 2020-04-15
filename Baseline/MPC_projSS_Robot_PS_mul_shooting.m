@@ -48,6 +48,7 @@ for k = 1:N
     st_next_euler = st+ (T*f_value);
     g = [g;st_next-st_next_euler]; % compute constraints
 end
+
 % make the decision variable one column  vector
 OPT_variables = [reshape(X,5*(N+1),1);reshape(U,2*N,1)];
 
@@ -110,7 +111,7 @@ u_cl=[];
 % than 10^-6 and the number of mpc steps is less than its maximum
 % value.
 main_loop = tic;
-while(norm((x0-xs),2) > 1e-2 && mpciter < sim_tim / T)
+while(norm((x0-xs),2) > 1e0 && mpciter < sim_tim / T)
     args.p   = [x0;xs]; % set the values of the parameters vector
     % initial value of the optimization variables
     args.x0  = [reshape(X0',5*(N+1),1);reshape(u0',2*N,1)];

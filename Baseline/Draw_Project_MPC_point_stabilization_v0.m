@@ -13,8 +13,6 @@ fontsize_labels = 14;
 x_r_1 = [];
 y_r_1 = [];
 
-
-
 r = rob_diam/2;  % obstacle radius
 ang=0:0.005:2*pi;
 xp=r*cos(ang);
