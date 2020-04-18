@@ -80,9 +80,8 @@ for k = 1:size(xx,2)
     % for video generation
     F(k) = getframe(gcf); % to get the current frame
 end
-
+pause
 toc
-
 close(gcf)
 % viobj = close(aviobj)
 % video = VideoWriter('exp.avi','Uncompressed AVI');

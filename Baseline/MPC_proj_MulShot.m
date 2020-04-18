@@ -8,7 +8,7 @@ addpath('/home/akshit/Downloads/casadi-linux-matlabR2014b-v3.5.1')
 import casadi.*
 
 T = 0.2; %[s]
-N = 100; % prediction horizon
+N = 150; % prediction horizon
 lr = 1.7;
 lf = 1.1;
 rob_diam = 2;
@@ -88,18 +88,18 @@ args.lbx(1:5:5*(N+1),1) = -5; %state x lower bound
 args.ubx(1:5:5*(N+1),1) = 5; %state x upper bound
 args.lbx(2:5:5*(N+1),1) = -50; %state y lower bound
 args.ubx(2:5:5*(N+1),1) = 50; %state y upper bound
-args.lbx(3:5:5*(N+1),1) = deg2rad(-65); %state psi lower bound
-args.ubx(3:5:5*(N+1),1) = deg2rad(65); %state psi upper bound
+args.lbx(3:5:5*(N+1),1) = deg2rad(-55); %state psi lower bound
+args.ubx(3:5:5*(N+1),1) = deg2rad(55); %state psi upper bound
 args.lbx(4:5:5*(N+1),1) = v_min; %state v lower bound
 args.ubx(4:5:5*(N+1),1) = v_max; %state v upper bound
-args.lbx(5:5:5*(N+1),1) = -inf; %state beta lower bound
-args.ubx(5:5:5*(N+1),1) = inf; %state beta upper bound
+args.lbx(5:5:5*(N+1),1) = deg2rad(-55);%-inf; %state beta lower bound
+args.ubx(5:5:5*(N+1),1) = deg2rad(55);%inf; %state beta upper bound
 
 
 args.lbx(5*(N+1)+1:2:5*(N+1)+2*N,1) = -1.39; %a lower bound
 args.ubx(5*(N+1)+1:2:5*(N+1)+2*N,1) = 1.39; %a upper bound
-args.lbx(5*(N+1)+2:2:5*(N+1)+2*N,1) = deg2rad(-50); %delta lower bound
-args.ubx(5*(N+1)+2:2:5*(N+1)+2*N,1) = deg2rad(50); %delta upper bound
+args.lbx(5*(N+1)+2:2:5*(N+1)+2*N,1) = deg2rad(-55); %delta lower bound
+args.ubx(5*(N+1)+2:2:5*(N+1)+2*N,1) = deg2rad(55); %delta upper bound
 %----------------------------------------------
 % ALL OF THE ABOVE IS JUST A PROBLEM SET UP
 
@@ -148,5 +148,5 @@ end;
 xx_t = xx';
 ss_error = norm((x0-xs),2)
 % average_mpc_time = main_loop_time/(mpciter+1);
-save('Kinematic_data','xx_t','u')
+save('Kinematic_data','xx(1:2)')
 Draw_MPC_Custom_PS_Obstacles(t,xx,xx1,u_cl,xs,N,rob_diam,obs_x,obs_y,obs_diam,obs_x2, obs_y2)
